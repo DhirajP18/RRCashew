@@ -23,7 +23,7 @@ const products: Product[] = [
     price: 18.99,
     rating: 4.9,
     reviews: 324,
-    description: 'Pure, unroasted cashew kernels with maximum nutrition',
+    description: 'Pure, unroasted cashew kernels with maximum nutrition.',
     badge: 'Best Seller',
     image: '/images/cashew-raw.jpg',
   },
@@ -34,7 +34,7 @@ const products: Product[] = [
     price: 16.99,
     rating: 4.8,
     reviews: 412,
-    description: 'Perfectly roasted with premium sea salt blend',
+    description: 'Perfectly roasted with premium sea salt.',
     image: '/images/cashew-salted.jpg',
   },
   {
@@ -44,7 +44,7 @@ const products: Product[] = [
     price: 19.99,
     rating: 5.0,
     reviews: 287,
-    description: 'Delicate honey coating with natural sweetness',
+    description: 'Delicate honey coating with natural sweetness.',
     badge: 'Premium',
     image: '/images/cashew-premium.jpg',
   },
@@ -55,104 +55,102 @@ const products: Product[] = [
     price: 14.99,
     rating: 4.7,
     reviews: 198,
-    description: 'Sustainable packaging with premium quality',
+    description: 'Sustainable packaging with premium quality.',
     image: '/images/packaging.jpg',
   },
 ];
 
 export default function ProductShowcase() {
   return (
-    <section id="products" className="py-20 md:py-32 bg-white">
+    <section id="products" className="pt-0 pb-12 md:pb-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
         {/* Header */}
-        <div className="text-center mb-16 animate-fadeInUp">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+        <div className="text-center mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold mb-2">
             Our Premium Collections
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Handpicked varieties crafted for every palate. From raw and natural to artisan blends, discover your perfect cashew experience.
+          <p className="text-sm md:text-base text-gray-600 max-w-xl mx-auto">
+            Handpicked cashew varieties crafted for quality and taste.
           </p>
         </div>
 
         {/* Product Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((product, index) => (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {products.map((product) => (
             <div
               key={product.id}
-              className="group animate-fadeInUp"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="bg-gray-50 border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition"
             >
-              <div className="bg-secondary/50 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-3 cursor-pointer h-full flex flex-col border border-border hover:border-primary/50 transform hover:scale-105 relative">
-                {/* Hover Glow Effect */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-tr from-primary/10 to-accent/10 transition-opacity duration-500" />
+              {/* Image */}
+              <div className="relative h-44 bg-gray-100">
+                {product.badge && (
+                  <span className="absolute top-2 right-2 z-10 bg-purple-600 text-white text-xs font-semibold px-2 py-0.5 rounded">
+                    {product.badge}
+                  </span>
+                )}
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  fill
+                  className="object-cover"
+                />
+              </div>
 
-                {/* Image Area */}
-                <div className="relative h-48 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center overflow-hidden">
-                  {product.badge && (
-                    <div className="absolute top-3 right-3 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full z-10 animate-bounce-in shadow-lg">
-                      {product.badge}
-                    </div>
-                  )}
-                  <Image
-                    src={product.image || "/placeholder.svg"}
-                    alt={product.name}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
+              {/* Content */}
+              <div className="p-4 flex flex-col h-full">
+                <span className="text-xs font-semibold text-purple-600 mb-1 uppercase">
+                  {product.category}
+                </span>
+
+                <h3 className="text-sm font-semibold text-gray-900 mb-1">
+                  {product.name}
+                </h3>
+
+                <p className="text-xs text-gray-600 mb-3">
+                  {product.description}
+                </p>
+
+                {/* Rating */}
+                <div className="flex items-center gap-1 mb-3">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      size={12}
+                      className={
+                        i < Math.round(product.rating)
+                          ? 'fill-purple-600 text-purple-600'
+                          : 'text-gray-300'
+                      }
+                    />
+                  ))}
+                  <span className="text-xs text-gray-500 ml-1">
+                    ({product.reviews})
+                  </span>
                 </div>
 
-                {/* Content */}
-                <div className="p-5 flex flex-col flex-grow">
-                  <p className="text-xs text-primary font-semibold uppercase tracking-wider mb-2">
-                    {product.category}
-                  </p>
-                  <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
-                    {product.name}
-                  </h3>
-                  <p className="text-sm text-muted-foreground mb-4 flex-grow">
-                    {product.description}
-                  </p>
+                {/* Footer */}
+                <div className="mt-auto flex items-center justify-between pt-3 border-t">
+                  <span className="text-lg font-bold text-purple-600">
+                    ${product.price}
+                  </span>
 
-                  {/* Rating */}
-                  <div className="flex items-center gap-2 mb-4">
-                    <div className="flex gap-0.5">
-                      {Array(5)
-                        .fill(null)
-                        .map((_, i) => (
-                          <Star
-                            key={i}
-                            size={14}
-                            className={i < Math.round(product.rating) ? 'fill-primary text-primary' : 'text-border'}
-                          />
-                        ))}
-                    </div>
-                    <span className="text-xs text-muted-foreground">
-                      ({product.reviews})
-                    </span>
-                  </div>
-
-                  {/* Footer */}
-                  <div className="flex items-center justify-between pt-4 border-t border-border relative z-10">
-                    <span className="text-2xl font-bold text-primary group-hover:text-accent transition-colors duration-300">
-                      ${product.price}
-                    </span>
-                    <button className="bg-primary hover:bg-accent text-white p-2 rounded-lg transition-all duration-300 transform hover:scale-125 hover:shadow-lg active:scale-95 relative overflow-hidden group/btn">
-                      <div className="absolute inset-0 bg-white/20 rounded-lg opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
-                      <ShoppingCart size={18} className="relative z-10" />
-                    </button>
-                  </div>
+                  <button className="p-2 rounded-md bg-purple-600 hover:bg-purple-700 text-white transition">
+                    <ShoppingCart size={16} />
+                  </button>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* View All Button */}
-        <div className="text-center mt-12 animate-fadeInUp">
-          <button className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-3 rounded-lg font-semibold transition-all duration-300">
+        {/* View All */}
+        <div className="text-center mt-8">
+          <button className="px-6 py-2 border border-purple-600 text-purple-600 rounded-md text-sm font-semibold hover:bg-purple-600 hover:text-white transition">
             View All Products
           </button>
         </div>
+
       </div>
     </section>
   );

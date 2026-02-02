@@ -11,54 +11,14 @@ interface ShowcaseImage {
 }
 
 const showcaseImages: ShowcaseImage[] = [
-  {
-    src: '/images/cashew-premium.jpg',
-    alt: 'Premium roasted cashews',
-    category: 'Products',
-    title: 'Premium Roasted',
-  },
-  {
-    src: '/images/cashew-raw.jpg',
-    alt: 'Raw natural cashews',
-    category: 'Products',
-    title: 'Raw & Natural',
-  },
-  {
-    src: '/images/cashew-salted.jpg',
-    alt: 'Salted roasted cashews',
-    category: 'Products',
-    title: 'Salted Varieties',
-  },
-  {
-    src: '/images/factory-processing.jpg',
-    alt: 'Factory processing facility',
-    category: 'Facility',
-    title: 'Processing Plant',
-  },
-  {
-    src: '/images/quality-control.jpg',
-    alt: 'Quality control testing',
-    category: 'Quality',
-    title: 'Quality Testing',
-  },
-  {
-    src: '/images/packaging.jpg',
-    alt: 'Premium packaging',
-    category: 'Products',
-    title: 'Eco-Packaging',
-  },
-  {
-    src: '/images/cashew-nutrition.jpg',
-    alt: 'Healthy nutrition',
-    category: 'Lifestyle',
-    title: 'Healthy Living',
-  },
-  {
-    src: '/images/farm-harvest.jpg',
-    alt: 'Farm harvest',
-    category: 'Facility',
-    title: 'Sustainable Farm',
-  },
+  { src: '/images/cashew-premium.jpg', alt: 'Premium roasted cashews', category: 'Products', title: 'Premium Roasted' },
+  { src: '/images/cashew-raw.jpg', alt: 'Raw natural cashews', category: 'Products', title: 'Raw & Natural' },
+  { src: '/images/cashew-salted.jpg', alt: 'Salted roasted cashews', category: 'Products', title: 'Salted Varieties' },
+  { src: '/images/factory-processing.jpg', alt: 'Factory processing facility', category: 'Facility', title: 'Processing Plant' },
+  { src: '/images/quality-control.jpg', alt: 'Quality control testing', category: 'Quality', title: 'Quality Testing' },
+  { src: '/images/packaging.jpg', alt: 'Premium packaging', category: 'Products', title: 'Eco Packaging' },
+  { src: '/images/cashew-nutrition.jpg', alt: 'Healthy nutrition', category: 'Lifestyle', title: 'Healthy Living' },
+  { src: '/images/farm-harvest.jpg', alt: 'Farm harvest', category: 'Facility', title: 'Sustainable Farm' },
 ];
 
 export default function ImageShowcase() {
@@ -68,72 +28,87 @@ export default function ImageShowcase() {
   const filteredImages =
     selectedCategory === 'All'
       ? showcaseImages
-      : showcaseImages.filter((img) => img.category === selectedCategory);
+      : showcaseImages.filter(img => img.category === selectedCategory);
 
   return (
-    <section className="py-20 md:py-32 bg-background">
+    <section className="pt-0 pb-12 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16 animate-fadeInUp">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Our Visual Journey
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Experience the quality and innovation behind every cashew from our facility
-          </p>
-        </div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 ${
-                selectedCategory === category
-                  ? 'bg-primary text-white shadow-lg'
-                  : 'bg-secondary/50 text-foreground hover:bg-secondary border border-border'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
+       {/* ===== Compact Styled Header ===== */}
+<div className="text-center mt-2 mb-6">
+  <span
+    className="inline-block mb-1 px-3 py-0.5 rounded-full text-[11px] font-semibold tracking-wide
+               bg-purple-100 text-purple-700"
+  >
+    OUR GALLERY
+  </span>
 
-        {/* Image Grid with Masonry Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-max">
+  <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight mb-1">
+    Our Visual Journey
+  </h2>
+
+  <p className="text-sm text-gray-600 max-w-xl mx-auto mb-3">
+    Discover our products, facilities, and uncompromised quality standards.
+  </p>
+</div>
+
+{/* ===== Compact Premium Tabs ===== */}
+<div className="flex flex-wrap justify-center gap-2 mb-6">
+  {categories.map((category) => {
+    const active = selectedCategory === category;
+
+    return (
+      <button
+        key={category}
+        onClick={() => setSelectedCategory(category)}
+        className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200
+          ${
+            active
+              ? 'bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow'
+              : 'bg-white border border-gray-200 text-gray-700 hover:bg-gray-50'
+          }
+        `}
+      >
+        {category}
+      </button>
+    );
+  })}
+</div>
+
+
+        {/* Image Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 auto-rows-[200px]">
           {filteredImages.map((image, index) => (
             <div
               key={`${selectedCategory}-${index}`}
-              className={`group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer animate-scaleIn ${
-                index % 5 === 0 ? 'md:col-span-2 md:row-span-2' : ''
+              className={`relative group overflow-hidden rounded-xl ${
+                index % 5 === 0 ? 'lg:col-span-2 lg:row-span-2' : ''
               }`}
-              style={{ animationDelay: `${(index % 4) * 0.1}s` }}
             >
-              {/* Image Container */}
-              <div className="relative h-64 md:h-80 lg:h-96 bg-black overflow-hidden">
-                <Image
-                  src={image.src || "/placeholder.svg"}
-                  alt={image.alt}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
+              {/* Image fills entire card */}
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-110"
+              />
 
-                {/* Overlay Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              {/* Dark gradient overlay (ONLY over image) */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+              {/* Text */}
+              <div className="absolute inset-0 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <span className="text-xs font-semibold text-primary mb-1">
+                  {image.category}
+                </span>
+                <h3 className="text-sm font-semibold text-white">
+                  {image.title}
+                </h3>
               </div>
-
-              {/* Content Overlay */}
-              <div className="absolute inset-0 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <p className="text-sm font-semibold text-accent mb-2">{image.category}</p>
-                <h3 className="text-xl font-bold text-white">{image.title}</h3>
-              </div>
-
-              {/* Border Shine Effect */}
-              <div className="absolute inset-0 border-2 border-white/0 group-hover:border-white/20 transition-all duration-300 rounded-2xl" />
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

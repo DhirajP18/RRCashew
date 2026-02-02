@@ -11,140 +11,130 @@ interface Benefit {
 
 const benefits: Benefit[] = [
   {
-    icon: <Award className="w-8 h-8" />,
+    icon: <Award className="w-6 h-6" />,
     title: 'FSSC 22000 Certified',
-    description: 'Food safety certified processing facility meeting international standards.',
+    description: 'International food safety certified facility.',
   },
   {
-    icon: <Zap className="w-8 h-8" />,
+    icon: <Zap className="w-6 h-6" />,
     title: 'High-Volume Capacity',
-    description: 'Well-equipped to handle large-scale supplies and orders efficiently.',
+    description: 'Efficient large-scale processing & supply.',
   },
   {
-    icon: <CheckCircle className="w-8 h-8" />,
+    icon: <CheckCircle className="w-6 h-6" />,
     title: '100% Traceability',
-    description: 'Complete batch and grade-wise sorting with full supply chain transparency.',
+    description: 'Batch & grade-wise transparency.',
   },
   {
-    icon: <Box className="w-8 h-8" />,
-    title: 'Customizable Solutions',
-    description: 'Flexible packaging options and private label packing services available.',
+    icon: <Box className="w-6 h-6" />,
+    title: 'Custom Packaging',
+    description: 'Private labeling & flexible packing.',
   },
   {
-    icon: <Leaf className="w-8 h-8" />,
-    title: 'Eco-Conscious Operations',
-    description: 'Solar-powered facility with rainwater harvesting and sustainability practices.',
+    icon: <Leaf className="w-6 h-6" />,
+    title: 'Eco-Friendly',
+    description: 'Solar-powered & sustainable operations.',
   },
   {
-    icon: <Users className="w-8 h-8" />,
-    title: 'Community Empowerment',
-    description: 'Creating opportunities and empowering rural communities through fair practices.',
+    icon: <Users className="w-6 h-6" />,
+    title: 'Community Focus',
+    description: 'Empowering rural communities.',
   },
 ];
 
 export default function WhyChooseUs() {
   return (
-    <section className="relative py-12 md:py-20 bg-gray-50 overflow-hidden">
+    <section className="relative pt-0 pb-3 md:pb-4 bg-gray-50 overflow-hidden">
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* ===== Header ===== */}
-        <div className="text-center mb-16 animate-fadeInUp">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
             Why Choose R R Cashew Industries
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Premium quality, certified standards, and customer-centric service that sets us apart.
+          <p className="text-sm text-gray-600 max-w-xl mx-auto">
+            Certified quality, sustainable practices, and reliable service.
           </p>
         </div>
 
-        {/* ===== Background Blobs ===== */}
-        <div className="absolute top-0 left-1/4 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-1000 pointer-events-none" />
-        <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-25 animate-blob animation-delay-3000 pointer-events-none" />
-        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-cyan-200 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-blob animation-delay-5000 pointer-events-none" />
-
-        {/* ===== Benefits Grid ===== */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
+        {/* Benefits Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 relative z-10">
           {benefits.map((benefit, index) => (
             <div
               key={index}
-              className="group relative p-8 rounded-3xl bg-white shadow-lg border border-gray-200 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 animate-fadeInUp cursor-pointer overflow-hidden"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="group p-5 rounded-2xl bg-white border border-gray-200 hover:shadow-lg transition-all duration-300"
             >
-              {/* Icon */}
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center text-purple-600 group-hover:text-pink-500 group-hover:scale-125 group-hover:shadow-lg transition-all duration-300 mb-5">
+              <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 mb-3 group-hover:scale-110 transition">
                 {benefit.icon}
               </div>
 
-              {/* Content */}
-              <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors duration-300">
+              <h3 className="text-lg font-semibold text-gray-900 mb-1">
                 {benefit.title}
               </h3>
-              <p className="text-gray-600 leading-relaxed group-hover:text-gray-800 transition-colors duration-300">
+              <p className="text-sm text-gray-600">
                 {benefit.description}
               </p>
 
-              {/* Bottom Check */}
-              <div className="mt-4 pt-4 border-t border-gray-200 group-hover:border-purple-300 transition-colors duration-300">
-                <div className="flex items-center gap-2 text-purple-600 text-sm font-semibold">
-                  <CheckCircle size={16} className="group-hover:animate-pulse-slow" />
-                  Certified & Verified
-                </div>
+              <div className="mt-3 pt-3 border-t text-purple-600 text-xs font-semibold flex items-center gap-2">
+                <CheckCircle size={14} />
+                Verified
               </div>
             </div>
           ))}
         </div>
 
-        {/* ===== Highlights Section ===== */}
-        <div className="mt-20 grid md:grid-cols-2 gap-8 relative z-10">
-          {/* Left Column */}
-          <div className="animate-slideInLeft">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Sustainability & Ethics</h3>
-            <div className="space-y-4">
-              {[
-                'Solar-powered processing facility reducing carbon footprint',
-                'Advanced rainwater harvesting system for water conservation',
-                'In-house water table restoration and environmental projects',
-                'Total adherence to ethical business practices and standards',
-              ].map((item, i) => (
-                <div key={i} className="flex gap-3 p-4 rounded-lg bg-purple-50 hover:bg-purple-100 transition-colors duration-300 group cursor-pointer">
-                  <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 group-hover:scale-110 transition-transform" />
-                  <span className="text-gray-900 text-sm font-medium">{item}</span>
-                </div>
-              ))}
+        {/* Highlights */}
+        <div className="mt-12 grid md:grid-cols-2 gap-6">
+          {[
+            {
+              title: 'Sustainability & Ethics',
+              items: [
+                'Solar-powered processing unit',
+                'Rainwater harvesting system',
+                'Environmental restoration projects',
+                'Ethical business practices',
+              ],
+            },
+            {
+              title: 'Quality Assurance',
+              items: [
+                '3-stage quality inspection',
+                'Advanced sorting machinery',
+                'Just-in-time delivery',
+                'Farm-to-fork traceability',
+              ],
+            },
+          ].map((section, i) => (
+            <div key={i}>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                {section.title}
+              </h3>
+              <div className="space-y-3">
+                {section.items.map((item, idx) => (
+                  <div key={idx} className="flex gap-2 text-sm text-gray-800">
+                    <CheckCircle className="w-4 h-4 text-purple-600 mt-0.5" />
+                    {item}
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-
-          {/* Right Column */}
-          <div className="animate-slideInRight">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Quality Assurance</h3>
-            <div className="space-y-4">
-              {[
-                '3-stage inspection process for superior quality control',
-                'Batch and grade-wise sorting with advanced machinery',
-                'Just-in-time delivery with organized distribution network',
-                'Comprehensive traceability from farm to fork',
-              ].map((item, i) => (
-                <div key={i} className="flex gap-3 p-4 rounded-lg bg-purple-50 hover:bg-purple-100 transition-colors duration-300 group cursor-pointer">
-                  <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 group-hover:scale-110 transition-transform" />
-                  <span className="text-gray-900 text-sm font-medium">{item}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
 
-        {/* ===== CTA Section ===== */}
-        <div className="mt-20 relative z-10 bg-gradient-to-r from-purple-50 to-pink-50 rounded-3xl p-12 text-center border border-purple-200 shadow-lg animate-fadeInUp">
-          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-            Ready to Experience Premium Quality?
+        {/* CTA */}
+        <div className="mt-12 bg-purple-50 rounded-2xl p-8 text-center border">
+          <h3 className="text-xl font-bold text-gray-900 mb-2">
+            Experience Premium Cashew Quality
           </h3>
-          <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-            Join hundreds of satisfied customers who trust R R Cashew Industries for their premium cashew needs.
+          <p className="text-sm text-gray-600 mb-5">
+            Trusted by businesses across India.
           </p>
-          <button className="bg-purple-600 hover:bg-pink-500 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg active:scale-95">
-            Get in Touch
+          <button className="bg-purple-600 hover:bg-pink-500 text-white px-6 py-2 rounded-md text-sm font-semibold transition">
+            Contact Us
           </button>
         </div>
+
       </div>
     </section>
   );

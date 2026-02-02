@@ -52,13 +52,6 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <button className="bg-amber-800 hover:bg-amber-900 text-white px-7 py-2.5 lg:px-8 lg:py-3 rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
-              Order Now
-            </button>
-          </div>
-
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -83,9 +76,7 @@ export default function Header() {
               </a>
             ))}
             <div className="px-4">
-              <button className="w-full bg-amber-800 text-white py-3 rounded-full font-semibold hover:bg-amber-900 transition-colors shadow">
-                Order Now
-              </button>
+              
             </div>
           </nav>
         )}
